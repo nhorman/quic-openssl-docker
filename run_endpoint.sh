@@ -11,7 +11,7 @@
 if [ "$ROLE" == "client" ]; then
     # Wait for the simulator to start up.
     /wait-for-it.sh sim:57832 -s -t 30
-    quic-client-non-block $CLIENT_PARAMS
+    quic-client-non-block $@ 
 elif [ "$ROLE" == "server" ]; then
     echo "No server here yet"
 fi
