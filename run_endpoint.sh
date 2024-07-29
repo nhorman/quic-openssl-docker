@@ -11,8 +11,8 @@
 if [ "$ROLE" == "client" ]; then
     # Wait for the simulator to start up.
     /wait-for-it.sh sim:57832 -s -t 30
-    [ INSERT COMMAND TO RUN YOUR QUIC CLIENT ]
+    quic-client-non-block $CLIENT_PARAMS
 elif [ "$ROLE" == "server" ]; then
-    [ INSERT COMMAND TO RUN YOUR QUIC SERVER ]
+    echo "No server here yet"
 fi
 
