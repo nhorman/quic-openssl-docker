@@ -1,7 +1,7 @@
 FROM martenseemann/quic-network-simulator-endpoint:latest
 
 # Install needed tools
-RUN apt-get update && apt-get install -y git make gcc perl
+RUN apt-get update && apt-get install -y git make gcc perl cmake build-essential
 
 # download and build your QUIC implementation
 RUN git clone https://github.com/nhorman/openssl.git
