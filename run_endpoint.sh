@@ -11,7 +11,17 @@
 if [ "$ROLE" == "client" ]; then
     # Wait for the simulator to start up.
     /wait-for-it.sh sim:57832 -s -t 30
-    ossl-nghttp3-demo $CLIENT_PARAMS
+    echo "TESTCASE is $TESTCASE"
+    case "$TESTCASE" in
+    "http3")
+        echo "Running HTTP3 Client"
+        ossl-nghttp3-demo $CLIENT_PARAMS
+        ;;
+    *)
+        echo "Unhandled test case $TESTCASE"
+        exit 1
+        ;;
+    esac
 elif [ "$ROLE" == "server" ]; then
     echo "No server here yet"
     exit 1
