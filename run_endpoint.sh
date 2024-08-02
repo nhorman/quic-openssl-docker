@@ -18,12 +18,12 @@ if [ "$ROLE" == "client" ]; then
         ossl-nghttp3-demo $CLIENT_PARAMS
         ;;
     *)
-        echo "Unhandled test case $TESTCASE"
-        exit 1
+        echo "UNSUPPORTED TESTCASE $TESTCASE"
+        exit 127
         ;;
     esac
 elif [ "$ROLE" == "server" ]; then
-    echo "No server here yet"
-    exit 1
+    echo "UNSUPPORTED"
+    exit 127
 fi
 
