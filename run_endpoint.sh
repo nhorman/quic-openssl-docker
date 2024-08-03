@@ -16,7 +16,7 @@ if [ "$ROLE" == "client" ]; then
     case "$TESTCASE" in
     "http3")
         echo "Running HTTP3 Client"
-        ossl-nghttp3-demo $CLIENT_PARAMS
+        ossl-nghttp3-demo server6:443 
         ;;
     *)
         echo "UNSUPPORTED TESTCASE $TESTCASE"
