@@ -26,4 +26,8 @@ elif [ "$ROLE" == "server" ]; then
     echo "UNSUPPORTED"
     exit 127
 fi
+while true
+do
+    sleep 100
+done
 
