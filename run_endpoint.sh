@@ -11,6 +11,7 @@
 if [ "$ROLE" == "client" ]; then
     # Wait for the simulator to start up.
     /wait-for-it.sh sim:57832 -s -t 30
+    export SSL_CERTS_DIR=/certs
     echo "TESTCASE is $TESTCASE"
     case "$TESTCASE" in
     "http3")

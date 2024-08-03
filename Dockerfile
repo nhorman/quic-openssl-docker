@@ -4,9 +4,9 @@ FROM martenseemann/quic-network-simulator-endpoint:latest
 RUN apt-get update && apt-get install -y git make gcc perl cmake build-essential
 
 # download and build your QUIC implementation
-RUN git clone https://github.com/nhorman/openssl.git
+RUN git clone https://github.com/openssl/openssl.git
 
-RUN cd openssl && git checkout http3-demo-options && \
+RUN cd openssl && \
     ./Configure enable-demos enable-h3demo enable-fips --prefix=/usr --openssldir=/etc/pki/tls && \
     make -j && make install && cp demos/guide/quic-client-block /usr/local/bin && \
     cp demos/guide/quic-client-non-block /usr/local/bin && \
