@@ -11,12 +11,11 @@
 if [ "$ROLE" == "client" ]; then
     # Wait for the simulator to start up.
     /wait-for-it.sh sim:57832 -s -t 30
-    export SSL_CERTS_DIR=/certs
     echo "TESTCASE is $TESTCASE"
     case "$TESTCASE" in
     "http3")
         echo "Running HTTP3 Client"
-        ossl-nghttp3-demo server6:443 
+        SSL_CERT_FILE=/certs/ca.pem ossl-nghttp3-demo server6:443 
         ;;
     *)
         echo "UNSUPPORTED TESTCASE $TESTCASE"
