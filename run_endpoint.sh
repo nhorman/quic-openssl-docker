@@ -16,6 +16,7 @@ if [ "$ROLE" == "client" ]; then
     "http3")
         echo "Running HTTP3 Client"
         SSL_CERT_FILE=/certs/ca.pem ossl-nghttp3-demo server6:443 
+        exit 0
         ;;
     *)
         echo "UNSUPPORTED TESTCASE $TESTCASE"
@@ -26,8 +27,4 @@ elif [ "$ROLE" == "server" ]; then
     echo "UNSUPPORTED"
     exit 127
 fi
-while true
-do
-    sleep 100
-done
 
