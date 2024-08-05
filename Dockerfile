@@ -32,7 +32,8 @@ RUN git clone https://github.com/curl/curl.git && \
     cd curl && \
     autoreconf -fi && ./configure --with-openssl-quic --with-openssl --with-nghttp3 --prefix=/usr && \
     make -j && \
-    make install
+    make install && \
+    rm -rf /curl
 
 # copy run script and run it
 COPY run_endpoint.sh .
