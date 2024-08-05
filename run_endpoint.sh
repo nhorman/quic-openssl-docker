@@ -18,7 +18,8 @@ if [ "$ROLE" == "client" ]; then
         cd /downloads
         for i in $REQUESTS
         do
-            SSL_CERT_FILE=/certs/ca.pem curl --http3-only $i 
+            OUTFILE=$(basename $i)
+            SSL_CERT_FILE=/certs/ca.pem curl --http3-only -o /downloads/$OUTFILE $i 
             if [ $? -eq 0 ]
             then
                 exit 0
