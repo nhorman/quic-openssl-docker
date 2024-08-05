@@ -15,7 +15,16 @@ if [ "$ROLE" == "client" ]; then
     case "$TESTCASE" in
     "http3")
         echo "Running HTTP3 Client"
-        SSL_CERT_FILE=/certs/ca.pem ossl-nghttp3-demo server6:443 
+        cd /downloads
+        for i in $REQUESTS
+        do
+            SSL_CERT_FILE=/certs/ca.pem curl --http3-only $i 
+            if [ $? -eq 0 ]
+            then
+                exit 0
+            fi
+            exit 1
+        done
         exit 0
         ;;
     *)
