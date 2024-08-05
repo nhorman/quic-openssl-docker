@@ -15,15 +15,17 @@ if [ "$ROLE" == "client" ]; then
     case "$TESTCASE" in
     "http3")
         echo "Running HTTP3 Client"
+        OUTOPTS=""
         for i in $REQUESTS
         do
             OUTFILE=$(basename $i)
-            SSL_CERT_FILE=/certs/ca.pem curl --verbose --http3-only -o /downloads/$OUTFILE $i 
-            if [ $? -ne 0 ]
-            then
-                exit 1
-            fi
+            OUTOPTS="$OUTOPTS -o /downloads/$OUTFILE "
         done
+        SSL_CERT_FILE=/certs/ca.pem curl --verbose --http3-only $OUTOPTS $REQUESTS 
+        if [ $? -ne 0 ]
+        then
+            exit 1
+        fi
         exit 0
         ;;
     *)
