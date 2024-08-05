@@ -21,7 +21,7 @@ if [ "$ROLE" == "client" ]; then
             OUTFILE=$(basename $i)
             OUTOPTS="$OUTOPTS -o /downloads/$OUTFILE "
         done
-        SSL_CERT_FILE=/certs/ca.pem curl --verbose --http3-only $OUTOPTS $REQUESTS 
+        SSL_CERT_FILE=/certs/ca.pem curl --verbose --parallel --http3-only $OUTOPTS $REQUESTS 
         if [ $? -ne 0 ]
         then
             exit 1
